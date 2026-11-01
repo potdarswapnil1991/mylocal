@@ -1,0 +1,132 @@
+ID,Summary,Sprint,Sprint Dates,Epic,Issue Type,Estimate (h),Priority,Labels,Acceptance Criteria
+ML-001,"[ML-001] Repo setup: Expo (TypeScript) app, `supabase/` folder, ESLint/Prettier, `AGENTS.md` coding rules for AI agents",Sprint 1,Nov 2 – Nov 14,Foundations,Chore,3,P0,ai-friendly,"- `npx expo start` runs on Android
+- Lint + typecheck pass
+- AGENTS.md covers stack, folder layout, naming, ""always write tests"""
+ML-002,"[ML-002] CI/CD: GitHub Actions (lint, typecheck, test) + EAS build profiles (dev/preview/prod) + OTA update channel",Sprint 1,Nov 2 – Nov 14,Foundations,Chore,3,P0,ai-friendly,"- PRs blocked on failing checks
+- `eas build --profile preview` produces an APK
+- OTA update reaches the installed preview build"
+ML-003,"[ML-003] Supabase dev + prod projects, PostGIS enabled, migration workflow, seed script",Sprint 1,Nov 2 – Nov 14,Foundations,Task,2,P0,ai-friendly,"- `supabase db push` applies migrations
+- PostGIS `ST_DWithin` query works
+- Secrets kept out of git"
+ML-004,"[ML-004] Design system v0: saffron/navy theme, type scale, Button, Card, Input, Avatar, BottomSheet, Toast",Sprint 1,Nov 2 – Nov 14,Foundations,Story,4,P0,ai-friendly,"- Components in a `/ui` folder with a demo screen
+- Text renders Hindi (Devanagari) correctly
+- Touch targets ≥ 44 px"
+ML-005,"[ML-005] Phone OTP login (Supabase Auth + MSG91/WhatsApp OTP provider), persistent session, logout",Sprint 1,Nov 2 – Nov 14,Identity,Story,4,P0,needs-human,"- OTP arrives in < 30 s
+- Wrong OTP shows an error, resend after 30 s
+- Session survives app restart
+- OTP requests rate-limited per number"
+ML-006,"[ML-006] Onboarding: name, avatar, language (English/Hindi), profile type (Person / Shop / Creator)",Sprint 1,Nov 2 – Nov 14,Identity,Story,3,P0,ai-friendly,"- Avatar compressed to ≤ 200 KB
+- Choices saved to `profiles`
+- Can skip avatar"
+ML-007,"[ML-007] Home locality: GPS permission, reverse geocode (Ola Maps/OSM), drag pin to adjust, save as `geography(Point)` + locality name",Sprint 1,Nov 2 – Nov 14,Identity,Story,5,P0,needs-human,"- Works when GPS is denied (search by area name)
+- Exact point stored privately; public location blurred to ~200 m
+- Locality name shown on the home header"
+ML-008,"[ML-008] Data model v1: `profiles`, `localities`, `posts`, `follows` + Row Level Security policies + ERD doc",Sprint 1,Nov 2 – Nov 14,Foundations,Task,4,P0,needs-human,"- RLS on every table (users edit only their own rows)
+- GIST index on location columns
+- ERD in `docs/data-model.md`"
+ML-009,"[ML-009] Sentry + PostHog, first events: `signup_started`, `signup_completed`, `locality_set`",Sprint 1,Nov 2 – Nov 14,Analytics,Chore,2,P1,ai-friendly,"- A test crash appears in Sentry
+- Funnel visible in PostHog"
+ML-010,"[ML-010] Apply for cloud credits (Google for Startups, AWS Activate, Microsoft Founders Hub), start company + DPIIT registration, create Play Console account",Sprint 1,Nov 2 – Nov 14,Business,Biz,3,P1,needs-human,"- 3 applications submitted
+- Play Console verified"
+ML-011,"[ML-011] Spike: compare Bunny Stream and Cloudflare Stream (upload API, 720p cost, playback on a low-end Android) → write a decision record",Sprint 2,Nov 16 – Nov 28,Video,Spike,2,P0,needs-human,"- `docs/adr/001-video.md` with cost per 1,000 views and the decision"
+ML-012,"[ML-012] Capture or pick a short: record ≤ 60 s or choose from gallery, trim, pick cover frame",Sprint 2,Nov 16 – Nov 28,Video,Story,5,P0,ai-friendly,"- Rejects > 60 s or > 200 MB
+- Trim preview plays
+- Works on Android 10+"
+ML-013,"[ML-013] Resumable upload via signed URL from an Edge Function, progress bar, retry on network drop",Sprint 2,Nov 16 – Nov 28,Video,Story,5,P0,ai-friendly,"- Upload survives toggling airplane mode
+- Signed URL expires in 1 hour
+- Upload key never shipped in the app"
+ML-014,"[ML-014] Transcode webhook → Edge Function marks post `processing → ready`, saves thumbnail + HLS URL",Sprint 2,Nov 16 – Nov 28,Video,Task,3,P0,ai-friendly,"- Webhook signature checked
+- Failed transcode → post `failed` + user notified"
+ML-015,"[ML-015] Create post: caption, hashtags, category (Talent / Food / Shop / News / Civic), location tag (home or current)",Sprint 2,Nov 16 – Nov 28,Posts,Story,3,P0,ai-friendly,"- Caption ≤ 500 chars
+- Hashtags parsed into a table
+- Post saved with a location point"
+ML-016,"[ML-016] Full-screen vertical player: swipe, autoplay, preload next 2, mute toggle, 720p cap, data-saver (480p)",Sprint 2,Nov 16 – Nov 28,Feed,Story,6,P0,needs-human,"- Next video starts in < 1 s on 4G
+- No memory growth after 50 swipes
+- Data-saver setting respected"
+ML-017,"[ML-017] Photo and text posts (image compression, Supabase Storage)",Sprint 2,Nov 16 – Nov 28,Posts,Story,3,P1,ai-friendly,"- Images ≤ 300 KB after compression
+- Mixed feed renders photo cards"
+ML-018,"[ML-018] Basic nearby feed: posts within 5 km, newest first, cursor pagination (temporary, replaced by ranking in S3)",Sprint 2,Nov 16 – Nov 28,Feed,Story,3,P0,ai-friendly,"- Only `ready` posts shown
+- Smooth infinite scroll"
+ML-019,[ML-019] Interview 10 shopkeepers + 10 residents in the target area; record pains and willingness to pay,Sprint 2,Nov 16 – Nov 28,Business,Biz,3,P0,needs-human,"- Notes in `docs/research/interviews.md`
+- Top 5 insights listed"
+ML-020,"[ML-020] Radius switcher UI: 1 km / 3 km / City / Global, saved per user",Sprint 3,Nov 30 – Dec 12,Feed,Story,3,P0,ai-friendly,"- Switching reloads the feed in < 500 ms (cached)
+- Last choice remembered"
+ML-021,"[ML-021] Ranking function v1 (Postgres RPC): engagement velocity × distance decay × freshness, filtered by tier",Sprint 3,Nov 30 – Dec 12,Feed,Task,6,P0,needs-human,"- Weights in a config table (no redeploy to tune)
+- Unit tests with fixed fixtures
+- Explain-plan uses indexes"
+ML-022,"[ML-022] Engagement tracking: view (≥ 3 s), watch time, likes, shares; batched writes into aggregate table",Sprint 3,Nov 30 – Dec 12,Feed,Task,4,P0,ai-friendly,"- Client batches events every 10 s
+- Duplicate views from one user within 1 h ignored"
+ML-023,"[ML-023] Escalation job (`pg_cron`, every 15 min): promote posts to City / State / Global when they beat locality percentile thresholds",Sprint 3,Nov 30 – Dec 12,Feed,Task,5,P0,needs-human,"- Thresholds configurable
+- Promotion history logged
+- Minimum view count stops tiny-sample flukes"
+ML-024,"[ML-024] ""Trending near you"" badge + creator notification when a post is promoted",Sprint 3,Nov 30 – Dec 12,Feed,Story,2,P1,ai-friendly,"- Badge shows tier reached
+- One notification per tier step"
+ML-025,"[ML-025] Cold-start blending: if local inventory < 20 posts, fill with City/Global content, clearly labelled",Sprint 3,Nov 30 – Dec 12,Feed,Story,3,P0,ai-friendly,"- Feed never shows ""empty""
+- Labels ""From your city"" / ""Global"" visible"
+ML-026,[ML-026] Locality & hashtag pages (tap locality name → that area's feed; tap #tag → tagged posts),Sprint 3,Nov 30 – Dec 12,Feed,Story,3,P1,ai-friendly,"- Deep-linkable URLs
+- Paginated"
+ML-027,"[ML-027] Synthetic seed data: 5 localities, 500 users, 20k posts for dev/testing",Sprint 3,Nov 30 – Dec 12,Foundations,Chore,2,P0,ai-friendly,"- `npm run seed` is repeatable
+- Never runs against prod"
+ML-028,"[ML-028] Performance test: feed RPC on 100k posts, p95 < 300 ms",Sprint 3,Nov 30 – Dec 12,Feed,Task,3,P1,needs-human,"- Results in `docs/perf.md`
+- Indexes added for any slow paths"
+ML-029,[ML-029] Choose the pilot locality: draw the 3 km boundary and list 100 target shops with category and contact,Sprint 3,Nov 30 – Dec 12,Business,Biz,2,P0,needs-human,"- Boundary saved as GeoJSON
+- Shop list in a sheet"
+ML-030,"[ML-030] Profile page: post grid, bio, locality, follower/following counts, edit profile",Sprint 4,Dec 14 – Dec 26,Social,Story,4,P0,ai-friendly,"- Own vs others' view
+- Counts update in real time"
+ML-031,"[ML-031] Follow / unfollow + ""Following"" feed tab",Sprint 4,Dec 14 – Dec 26,Social,Story,3,P0,ai-friendly,"- Can't follow yourself
+- Following feed paginates"
+ML-032,"[ML-032] Comments: one level of replies, like a comment, delete own comment",Sprint 4,Dec 14 – Dec 26,Social,Story,4,P0,ai-friendly,"- Comment count consistent
+- Deleted comments show ""removed"""
+ML-033,[ML-033] Share to WhatsApp with a deep link + web fallback page with preview image (OG tags),Sprint 4,Dec 14 – Dec 26,Growth,Story,3,P0,ai-friendly,"- Link opens the app if installed, else Play Store / web preview
+- Preview shows thumbnail + caption"
+ML-034,"[ML-034] AI moderation: on post ready, check caption + 3 sampled frames; auto-hide high risk, queue medium risk",Sprint 4,Dec 14 – Dec 26,Trust & Safety,Task,5,P0,needs-human,"- Decision + reason stored
+- Under 60 s per post
+- Creator can appeal"
+ML-035,"[ML-035] Report & block + admin review queue (Expo web, admin role only)",Sprint 4,Dec 14 – Dec 26,Trust & Safety,Story,4,P0,needs-human,"- Report reasons list
+- Blocked users disappear from feed and comments
+- Admin page protected by role"
+ML-036,"[ML-036] Push notifications via Expo/FCM: like, comment, follow, promotion; per-type on/off settings",Sprint 4,Dec 14 – Dec 26,Notifications,Story,4,P0,ai-friendly,"- Tapping a notification opens the right screen
+- Quiet hours 10 PM – 8 AM by default"
+ML-037,"[ML-037] Rate limits & anti-spam: posts/day, comments/min, tighter limits for new accounts",Sprint 4,Dec 14 – Dec 26,Trust & Safety,Task,2,P0,ai-friendly,"- Limits in config
+- Friendly error message"
+ML-038,"[ML-038] Privacy policy, terms, community guidelines, grievance officer page (AI-drafted, reviewed by you)",Sprint 4,Dec 14 – Dec 26,Compliance,Chore,2,P0,needs-human,"- Linked in app settings and Play listing
+- DPDP consent text for location"
+ML-039,[ML-039] Alpha release on Play internal testing for 20 testers + in-app feedback form,Sprint 4,Dec 14 – Dec 26,Release,Release,2,P0,needs-human,"- 20 installs
+- Feedback collected in a sheet"
+ML-040,"[ML-040] Shop onboarding: name, category, address pin, hours, phone, UPI ID, FSSAI no. (food), delivery options (self / pickup / platform), minimum order",Sprint 5,Dec 28 – Jan 9,Shops,Story,5,P0,needs-human,"- FSSAI required for food categories
+- UPI ID format validated
+- Draft saved between steps"
+ML-041,"[ML-041] Shop verification: admin approves → ""Verified local shop"" badge",Sprint 5,Dec 28 – Jan 9,Shops,Task,2,P0,ai-friendly,"- Unverified shops can't take orders
+- Approval logged"
+ML-042,"[ML-042] Product CRUD: name, price, MRP, photos, variants (size/colour), in-stock toggle, category",Sprint 5,Dec 28 – Jan 9,Catalog,Story,6,P0,ai-friendly,"- Up to 5 photos per product
+- Variant prices
+- Out-of-stock hidden from cart"
+ML-043,"[ML-043] AI quick-add: photo of a product or price list → suggested name, price, category for review",Sprint 5,Dec 28 – Jan 9,Catalog,Story,4,P1,needs-human,"- Shop confirms before saving
+- Works with Hindi/English price lists
+- Cost per call logged"
+ML-044,"[ML-044] Storefront page: products, shop shorts, Call / WhatsApp / Directions buttons, open/closed status",Sprint 5,Dec 28 – Jan 9,Shops,Story,4,P0,ai-friendly,"- ""Open now"" uses shop hours
+- Directions opens maps app"
+ML-045,"[ML-045] Nearby shops: map + list, filter by category, open now, distance",Sprint 5,Dec 28 – Jan 9,Discovery,Story,5,P0,ai-friendly,"- Clustered map pins
+- Sorted by distance by default"
+ML-046,[ML-046] Web shop dashboard v0 (Expo web): manage profile and catalog from a laptop,Sprint 5,Dec 28 – Jan 9,Shops,Story,3,P1,ai-friendly,"- Same auth as the app
+- Bulk price edit"
+ML-047,[ML-047] Onboard the first 10 friendly shops in person; note friction points,Sprint 5,Dec 28 – Jan 9,Business,Biz,4,P0,needs-human,"- 10 live storefronts
+- Friction list in `docs/research/shops.md`"
+ML-048,[ML-048] Tag up to 3 products on a short/post; product chip on the player with Add to Cart / Order Now,Sprint 6,Jan 11 – Jan 23,Shoppable Video,Story,5,P0,ai-friendly,"- Only the shop's own products can be tagged
+- Chip shows price + stock
+- Tap tracked as an event"
+ML-049,"[ML-049] Single-shop cart: quantity, notes, warning when adding from another shop",Sprint 6,Jan 11 – Jan 23,Cart,Story,4,P0,ai-friendly,"- Cart persists across restarts
+- Minimum order shown"
+ML-050,"[ML-050] Checkout: saved address, delivery mode (pickup / shop delivery), slot (""next hourly drop""), clear fee breakdown",Sprint 6,Jan 11 – Jan 23,Checkout,Story,4,P0,needs-human,"- Free-delivery threshold applied correctly
+- Total matches server calculation"
+ML-051,[ML-051] Payment: UPI intent to the shop's UPI ID with amount + order reference; COD; shop confirms payment received,Sprint 6,Jan 11 – Jan 23,Payments,Story,5,P0,needs-human,"- Opens GPay/PhonePe/Paytm
+- Order reference in UPI note
+- Unpaid UPI orders auto-cancel after 15 min"
+ML-052,"[ML-052] Shop order inbox: push + WhatsApp alert, accept/reject, status flow (accepted → packed → out for delivery → delivered)",Sprint 6,Jan 11 – Jan 23,Orders,Story,5,P0,ai-friendly,"- Alert in < 10 s
+- Reject requires a reason
+- Customer sees each status change"
+ML-053,"[ML-053] Customer order tracking, history, reorder",Sprint 6,Jan 11 – Jan 23,Orders,Story,3,P1,ai-friendly,- Reorder skips out-of-stock items with a notice
+ML-054,"[ML-054] Platform-fee ledger: ₹2 accrued per completed order per shop, monthly statement",Sprint 6,Jan 11 – Jan 23,Payments,Task,3,P0,needs-human,"- Cancelled orders not charged
+- Statement exportable as CSV"
+ML-055,[ML-055] End-to-end test of the order flow (Maestro) in CI,Sprint 6,Jan 11 – Jan 23,Quality,Task,2,P1,ai-friendly,- Runs on every PR to `main`
+ML-056,[ML-056] Run 5 real test orders with 3 shops; record timings and issues,Sprint 6,Jan 11 – Jan 23,Business,Biz,2,P0,needs-human,- Issues filed as new backlog items
